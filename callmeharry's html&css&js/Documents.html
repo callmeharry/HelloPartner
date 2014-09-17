@@ -1,4 +1,4 @@
-<!--Author:Callmeharry Time:2014/9/2-->
+﻿<!--Author:Callmeharry Time:2014/9/2-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -55,13 +55,6 @@
 	</div>
 	<div id="documents-content">
 	<form class="form-horizontal" action="downloadfiles" method="POST" role="form">
-		<div class="documents-operate">
-			<div class="documents-download-delete form-group">
-				<label class="control-label">已选中n个文件</label>
-				<input type="button" class="btn btn-default btn-sm" value="下载"></button>
-				<input type="button" class="btn btn-default btn-sm"  value="删除"></button>
-			</div>
-		</div>
 		<div class="documents-table">
 			<table class="table">
 				<tr>
@@ -71,6 +64,7 @@
 					<th>上传者</th>
 					<th>上传时间</th>
 					<th>大小</th>
+					<th colspan="2">操作</th>
 				</tr>
 				{% for document in documents%}
 				<!--下面的<img>标签指代的是文件的图标，服务器端需要存储某几种常见文件的图标的图像文件-->
@@ -81,6 +75,8 @@
 					<td>{{document.uploader}}</td>
 					<td>{{document.time}}</td>
 					<td>{{document.size}}Byte</td>
+					<td><a href="{{document.src}}" style="text-decoration:none; cursor:pointer">下载</a></td>
+					<td><a style="text-decoration:none; cursor:pointer">删除</a></td>
 				</tr>
 				{% endfor %}
 			</table>
