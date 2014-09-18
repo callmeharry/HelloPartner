@@ -1,0 +1,86 @@
+﻿<!--
+@Author: Megas Liu
+@UpdateDate: 08/30/2014
+@Topic: Hello Partner网站搜索队友页
+@Function: 搜索队友
+-->
+
+<!DOCTYPE html>
+<html xmlns="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1">
+	<title>Hello Partner!</title>
+
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+	<script src="js/jquery-1.11.1.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+    <script src="js/mustache.js"></script>
+    <script src="js/SearchPartner.js"></script>
+</head>
+<body onload="search_partner_show_result()">
+<div class="container">
+	<div class="row">
+		<div class="col-md-4">
+			<label for="sendEmail">发送邮件：</label>
+			<form action="#" class="form-group" role="sendEmail">
+			    <input type="email" class="form-control col-md-4" placeholder="请输入被邀请队友的邮箱">
+			    <button class="btn btn-primary col-md-3" data-toggle="modal" data-target="#send-email-modal">编辑邮件</button>
+                <!-- 编辑邮件的模态框 -->
+                <div class="modal fade" id="send-email-modal" tabindex="-1" role="dialog" arialabelledby="send-email-modal-label" aria-hidden="true">
+                	<div class="modal-dialog">
+                		<div class="modal-content">
+                			<div class="modal-header">
+                				<button class="close" type="button" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                				<h4 class="modal-title" id="send-email-modal-label">邀请邮件</h4>
+                			</div>
+                			<div class="modal-body">
+                			    <div>来自Hello Partner！的邀请</div>
+                			    <textarea class="form-control" rows="5"></textarea>
+                				
+                			</div>
+                			<div class="modal-footer">
+                				<button class="btn btn-primary" type="button" data-dismiss="modal">发送</button>
+                				<button class="btn btn-primary" type="button">保存</button>
+                			</div>
+                		</div>
+                	</div>
+                </div>
+			</form>
+		</div>
+		<div class="col-md-12">
+			<label for="doNotKnowParner">没有特定人选？</label>
+		</div>
+		<div>
+			<label for="searchPartner" class="col-md-2">搜索队友：</label>
+			<form action="#" class="form-group col-md-4" role="searchPartner">
+				<input type="search" class="form-control col-md-4">
+			</form>
+			<button class="btn btn-primary col-md-1" type="button">搜索</button>
+		</div>
+		<div class="col-md-12">
+			<h4>搜索结果：</h4>
+			<div class="list-group" id="list-group-result">
+			    <!-- 模板 -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<script id="result-item-of-search-partner-tmpl" type="text/html">
+<a href="#" class="list-group-item">
+	<div class="col-md-10">
+		<h4 class="list-group-item-heading" id="search-partner-username">{{username}}</h4>
+	</div>
+	<div class="col-md-2">
+		<button class="btn btn-primary">邀请</button>
+	</div>
+	<div>
+		<p class="list-group-item-text" id="search-partner-info">{{partner_info}}</p>
+	</div>
+</a>
+</script>
+</body>
+</html>

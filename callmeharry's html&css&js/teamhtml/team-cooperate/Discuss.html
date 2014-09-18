@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../css/discuss.css" rel="stylesheet" type="text/css" />
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/discuss.js"></script>
+<script src="../js/jquery-1.11.1.min.js"></script>
+<script src="../js/mustache.js"></script>
+<script src="../js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="discuss_main">
+<div id="new-news">
+					<div class="news-reply-new-tab" id="news-reply-new-tab-div-0" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px"><a onclick="show_new_reply(this)" name="news-reply-new-tab-0" style="cursor:pointer; text-decoration:none">发起讨论...</a></div>
+					<div class="news-reply-new-main" id="news-reply-new-main-0">
+						<form role="form">
+							<div class="form-group" style="padding-top:5px; padding-left:10px; padding-right:10px;">
+							<textarea id="news-reply-new-input-{{mid}}" class="news-reply-new-input autotextarea form-control" placeholder="在这里写下讨论内容..." name="" cols="" rows="" autocomplete="off" goog_input_chext="chext"></textarea>
+							</div>
+							<div class="form-group"  style="padding-bottom:5px; padding-left:10px; padding-right:10px;">
+								<input type="button" value="发送" class="btn btn-primary btn-sm" style="padding-left:10px" />
+							</div>
+						</form>
+					</div>
+				</div>
+				
+{% for news in newslist %}
+<div id="news-{{news.mid}}" class="news-item-unread">
+	<div class="news-item" id="news-item-{{news.mid}}">					
+		<div class="news-item-main">   
+			<div class="news-item-main-content">
+				<div class="news-item-name-bar">
+				<div class="news-name-rightbar">
+						<span class="news-time">{{news.time}}</span>
+						<span id="news-more-reply-{{news.mid}}" class="news-more-reply"><a onclick="reply_adduser(this)" name={{news.name}}-{{news.mid}} style="text-decoration:none; cursor:pointer">回复</a></span>
+					</div>
+					<div id="news-name-id-{{news.mid}}" class="un">{{news.name}}</div>
+				</div>
+				<div class="news-item-content">
+					<span id="news-item-content-{{news.mid}}" style="margin-top:50px">{{news.content}}</span></div> 								
+			</div>
+			<div class="news-reply-area">
+				<div id="news-reply-area-{{news.mid}}">
+				<!---->{% for comment in news.comments %}
+					<div id="reply-{{comment.cid}}" class="news-reply-item-unread">
+	<div class="news-reply-item" id="news-reply-item-{{comment.cid}}">
+		<div class="news-reply-main">
+			<div class="news-reply-name" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px">
+			<div class="news-reply-name-rightbar">
+					<span class="news-reply-time">{{comment.time}}</span>
+					<span id="news-reply-more-text-reply-{{comment.cid}}" class="news-reply-more-text-reply"><a onclick="reply_adduser(this)" name={{comment.name}}-{{news.mid}} style="text-decoration:none; cursor:pointer">回复</a></span>
+				</div>
+				<div id="news-reply-name-id-{{comment.cid}}" class="un">{{comment.name}}</div>
+			</div>
+			<div class="news-reply-content" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px">
+				<span id="news-reply-content-{{comment.cid}}">{{comment.content}}</span>
+			</div>
+			<div id="news-reply-link-{{comment.cid}}" class="news-link" >
+				<div class="clearboth"></div>
+			</div>
+		</div>
+		<div class="news-reply-unread-dot"></div>
+	</div>
+</div>
+{% endfor %}
+<!---->
+				</div>															
+				<div id="news-reply-new-{{news.mid}}" class="news-reply-new news-reply-new-off">
+					<div class="news-reply-new-tab" id="news-reply-new-tab-div-1" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px"><a onclick="show_new_reply(this)" name="news-reply-new-tab-{{news.mid}}" style="cursor:pointer; text-decoration:none">回复...</a></div>
+					<div class="news-reply-new-main" id="news-reply-new-main-{{news.mid}}">
+						<form role="form">
+							<div class="form-group" style="padding-top:5px; padding-left:10px; padding-right:10px;">
+							<textarea id="news-reply-new-input-{{news.mid}}" class="news-reply-new-input autotextarea form-control" placeholder="回复..." name="" cols="" rows="" autocomplete="off" goog_input_chext="chext"></textarea>
+							</div>
+							<div class="form-group"  style="padding-bottom:5px; padding-left:10px; padding-right:10px;">
+								<input type="button" value="回复" class="btn btn-primary btn-sm" style="padding-left:10px" />
+							</div>
+						</form>
+					</div>
+				</div>		
+			</div>
+		</div>
+		<div class="news-unread-dot"></div>
+	</div>
+</div>
+{% endfor %}
+</div>
+<!--模板部分-->
+<script id="message-item-tmpl" type="text/html">
+<div id="news-{{mid}}" class="news-{{mid}} news-item-unread">
+	<div class="news-item" id="news-item-{{mid}}">					
+		<div class="news-item-main">   
+			<div class="news-item-main-content">
+				<div class="news-item-name-bar">
+				<div class="news-name-rightbar">
+						<!--下面的”刚刚更新“在加载时要替换为发布消息的时间，精确到分钟-->
+						<span class="news-time">刚刚更新</span>
+						<span id="news-more-reply-{{mid}}" class="news-more-reply">回复</span>
+					</div>
+					<div id="news-name-id-{{mid}}" class="un">{{uid}}</div>
+				</div>
+				<div class="news-item-content">
+					<span id="news-item-content-{{mid}}" style="margin-top:50px">{{{content}}}</span>
+				</div> 								
+			</div>
+			<div class="news-reply-area">
+				<div id="news-reply-area-{{mid}}">
+
+				</div>															
+				<div id="news-reply-new-{{mid}}" class="news-reply-new news-reply-new-off">
+					<div class="news-reply-new-tab" id="news-reply-new-tab-div-{{mid}}" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px"><a onclick="show_new_reply(this)" name="news-reply-new-tab-{{mid}}" style="cursor:pointer; text-decoration:none">回复...</a></div>
+					<div class="news-reply-new-main" id="news-reply-new-main-{{mid}}">
+						<form role="form">
+							<div class="form-group" style="padding-top:5px; padding-left:10px; padding-right:10px;">
+							<textarea id="news-reply-new-input-{{mid}}" class="news-reply-new-input autotextarea form-control" placeholder="回复..." name="" cols="" rows="" autocomplete="off" goog_input_chext="chext"></textarea>
+							</div>
+							<div class="form-group"  style="padding-bottom:5px; padding-left:10px; padding-right:10px;">
+								<input type="button" value="回复" class="btn btn-primary btn-sm" style="padding-left:10px" />
+							</div>
+						</form>
+					</div>
+				</div>		
+			</div>
+		</div>
+		<div class="news-unread-dot"></div>
+	</div>
+</div>
+</script>
+
+<script id="comment-item-tmpl" type="text/html">
+<div id="reply-{{cid}}" class="news-reply-item-unread">
+	<div class="news-reply-item" id="news-reply-item-{{cid}}">
+		<div class="news-reply-main">
+			<div class="news-reply-name" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px">
+			<div class="news-reply-name-rightbar">
+					<span class="news-reply-time">{{ctime}}</span>
+					<span id="news-reply-more-text-reply-{{cid}}" class="news-reply-more-text-reply">回复</span>
+				</div>
+				<div id="news-reply-name-id-{{cid}}" class="un">{{uid}}</div>
+			</div>
+			<div class="news-reply-content" style="padding-top:5px; padding-left:10px; padding-right:10px;padding-bottom:5px">
+				<span id="news-reply-content-{{cid}}">{{{content}}}</span>
+			</div>
+			<div id="news-reply-link-{{cid}}" class="news-link" >
+				<div class="clearboth"></div>
+			</div>
+		</div>
+		<div class="news-reply-unread-dot"></div>
+	</div>
+</div>
+</script>
+</body>
+</html>

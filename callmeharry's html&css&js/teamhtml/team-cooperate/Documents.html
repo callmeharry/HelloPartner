@@ -1,0 +1,88 @@
+﻿<!--Author:Callmeharry Time:2014/9/2-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>文档</title>
+<link href="../css/documents.css" rel="stylesheet" type="text/css" />
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/documents.js">
+</script>
+<script src="../js/jquery-1.11.1.min.js">
+</script>
+<script src="../js/bootstrap.min.js">
+</script>
+<script src="../js/mustache.js">
+</script>
+</head>
+
+<body>
+<div id="documents">
+	<div id="documents-header" class="row">
+		<div class="container col-md-5" style="padding-top:15px; padding-left:70px">
+				<div style="float:left; height:50px; text-align:center; line-height:40px;">按上传时间筛选：</div>
+				<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >{{upload-time-select}}
+    <span class="caret"></span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="memberlist">
+		<!--下面的<li>标签是按钮下拉菜单的单个选项，请将#替换为链接-->
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">全部</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">一周内</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">一月内</a></li>
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">三月内</a></li>
+		</ul>
+				</div>
+			</div>
+		<div class="container col-md-5" style="padding-top:15px; padding-left:70px">
+				<div style="float:left; height:50px; text-align:center; line-height:40px;">按上传者筛选：</div>
+				<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >{{uploader-select}}
+    <span class="caret"></span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="memberlist">
+		{% for staff in staffs%}
+		<!--为每个staff指定一个url 即staff.href-->
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="{{staff.id}}">{{staff.username}}</a></li>
+		{% endfor %}
+		</ul>
+				</div>
+			</div>
+			<div class="container col-md-2" style="padding-top:15px; padding-left:70px">
+			 <form ENCTYPE="multipart/form-data" action="uploadfile/" method=POST>
+               <input name="file1" type="file">
+               <input type="submit" value="Send File">
+            </form>
+			</div>
+	</div>
+	<div id="documents-content">
+	<form class="form-horizontal" action="downloadfiles" method="POST" role="form">
+		<div class="documents-table">
+			<table class="table">
+				<tr>
+					<th></th>
+					<th></th>
+					<th>文件名</th>
+					<th>上传者</th>
+					<th>上传时间</th>
+					<th>大小</th>
+					<th colspan="2">操作</th>
+				</tr>
+				{% for document in documents%}
+				<!--下面的<img>标签指代的是文件的图标，服务器端需要存储某几种常见文件的图标的图像文件-->
+				<tr>
+					<td><input type="checkbox" value="document.name" name="checkboxlist"/></td>
+					<td><img src="{{document.imgsrc}}" /></td>
+					<td>{{document.name}}</td>
+					<td>{{document.uploader}}</td>
+					<td>{{document.time}}</td>
+					<td>{{document.size}}Byte</td>
+					<td><a href="{{document.src}}" style="text-decoration:none; cursor:pointer">下载</a></td>
+					<td><a style="text-decoration:none; cursor:pointer">删除</a></td>
+				</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</form>
+	</div>
+</div>
+</body>
+</html>

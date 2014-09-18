@@ -1,0 +1,138 @@
+<!--Author:Callmeharry Time:2014/9/1-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>总结</title>
+<link href="../css/report.css" rel="stylesheet" type="text/css" />
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.11.1.min.js">
+</script>
+<script src="../js/mustache.js">
+</script>
+<script src="../js/report.js">
+</script>
+<script src="../js/bootstrap.min.js">
+</script>
+</head>
+
+<body onload="load()">
+<div id="report">
+	<div id="report-header">
+		<div class="left header-side">&nbsp;
+		</div>
+		<div class="left" id="report-header-content">
+			<div id="report-title"><h2><b>{{title}}</b></h2>
+			</div>
+			<div id="report-time"><h4>{{time}}</h4>
+			</div>
+			<div id="report-previous-next">
+				<div class="col-md-6">
+					<a href="##" style="text-decoration:none">上一篇</a>
+				</div>
+				<div class="col-md-6" >
+					<a href="##" style="text-decoration:none">下一篇</a>
+				</div>
+			</div>
+		</div>
+		<div class="left header-side">
+			<div class="container" style="padding-top:15px">
+				<div style="float:left; height:50px; text-align:center; line-height:40px;">筛选成员：</div>
+				<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >{{member}}
+    <span class="caret"></span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="memberlist">
+		<!--下面的<li>标签是按钮下拉菜单的单个选项，请将#替换为链接，*替换为成员名字-->
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">*</a></li>
+		</ul>
+				</div>
+			</div>
+			<div class="container" style="padding-bottom:15px">
+			<button data-toggle="modal" data-target="#new-report-modal" class="btn btn-default">写总结/补充未写完的总结</button>
+			<div class="modal fade" id="new-report-modal" tabindex="-1" role="dialog" arialabelledby="send-email-modal-label" aria-hidden="true">
+                	<div class="modal-dialog">
+                		<div class="modal-content">
+                			<div class="modal-header">
+                				<button class="close" type="button" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">关闭</span></button>
+                				<h4 class="modal-title" id="send-email-modal-label">我的总结</h4>
+                			</div>
+                			<div class="modal-body">
+                			    <div>总结一下上一个工作阶段自己的成果。</div>
+                			    <textarea class="form-control" rows="3" id="report-item-1"></textarea>
+                				<div>现在自己的状态如何？遇到了什么困难与挑战？是否需要团队的帮助？抑或是有余力帮助团队的其他成员？</div>
+							<textarea class="form-control" rows="3" id="report-item-2"></textarea>
+							<div>下一个工作阶段，自己的目标是：</div>
+							<textarea class="form-control" rows="3" id="report-item-3"></textarea>
+							<div>这个工作阶段，有没有什么进步？或者是意识到了自己哪里的不足？</div>
+							<textarea class="form-control" rows="3" id="report-item-4"></textarea>
+							<div>还想说点什么？</div>
+							<textarea class="form-control" rows="3" id="report-item-5"></textarea>
+                			</div>
+                			<div class="modal-footer">
+                				<button class="btn btn-primary" type="button" data-dismiss="modal" onclick="send_report()">发送</button>
+                				<button class="btn btn-primary" type="button" onclick="save_as_draft()">保存为草稿</button>
+                			</div>
+                		</div>
+                	</div>
+                </div>
+			</div>
+		</div>
+	</div>
+		<HR style="BORDER-RIGHT: #00686b 1px dotted; BORDER-TOP: #00686b 1px dotted; BORDER-LEFT: #00686b 1px dotted; BORDER-BOTTOM: #00686b 1px dotted" noShade SIZE=1>
+	<div id="report-content">
+		<div id="report-inneritem">
+		</div>
+	</div>
+</div>
+<!--模板-->
+<script id="report-header-tmpl" type="text/html">
+	<div class="list-header">
+		<div class="list-header-chooseauthor left">
+		</div>
+		<div class="list-header-new-report right">
+			
+		</div>
+	</div> 
+	<br/>
+	<hr>
+	<div class="list-page">
+		<button id="page-up">上一篇</button>
+		<button id="page-down">下一篇</button> 
+	</div>
+</script>
+<script id="singlereport-content-tmpl" type="text/html">
+	<div class="singlereport-content">
+		<div id="singlereport-item-1">
+			<h4>总结一下上一个工作阶段自己的成果。</h4>
+			<p>{{singlereport-item-1}}</p>
+		</div>
+		<div id="singlereport-item-2">
+			<h4>现在自己的状态如何？遇到了什么困难与挑战？是否需要团队的帮助？抑或是有余力帮助团队的其他成员？</h4>
+			<p>{{singlereport-item-2}}</p>
+		</div>
+		<div id="singlereport-item-3">
+			<h4>下一个工作阶段，自己的目标是：</h4>
+			<p>{{singlereport-item-3}}</p>
+		</div>
+		<div id="singlereport-item-4">
+			<h4>这个工作阶段，有没有什么进步？或者是意识到了自己哪里的不足？</h4>
+			<p>{{singlereport-item-4}}</p>
+		</div>
+		<div id="singlereport-item-5">
+			<h4>还想说点什么？</h4>
+			<p>{{singlereport-item-5}}</p>
+		</div>
+	</div>
+</script>
+<script id="no-report-tmpl" type="text/html">
+	<div id="no-report">
+		<h3><b>还没有人写总结……</b></h3>
+		<h4><b>点击“写总结/补充未写完的总结”发布第一份总结吧。</b></h4>
+	</div>
+	</script>
+</script>
+</body>
+</html>
+
+
+

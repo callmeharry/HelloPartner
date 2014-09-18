@@ -1,0 +1,60 @@
+<!--Author:Callmeharry Time:2014/9/1-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<link href="../css/review.css" rel="stylesheet" type="text/css" />
+<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<script src="../js/jquery-1.11.1.min.js">
+</script>
+<script src="../js/bootstrap.min.js">
+</script>
+<script src="../js/bootstrap-dropdown.js">
+</script>
+<script src="../js/review.js">
+</script>
+</head>
+
+<body onload="load()">
+<div id="review">
+	<div class="container review-head">
+		<div style="float:left; height:50px; text-align:center; line-height:40px;">筛选成员：</div>
+		<div class="dropdown">
+		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >{{member}}
+    <span class="caret"></span></button>
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="memberlist">
+		<!--下面的<li>标签是按钮下拉菜单的单个选项，请将#替换为链接，*替换为成员名字-->
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">*</a></li>
+		</ul>
+		</div>
+	</div>
+	<HR style="BORDER-RIGHT: #00686b 1px dotted; BORDER-TOP: #00686b 1px dotted; BORDER-LEFT: #00686b 1px dotted; BORDER-BOTTOM: #00686b 1px dotted" noShade SIZE=1>
+	<div class="container review-content">
+	</div>
+</div>
+</body>
+<script id="review-date-tmpl" type="text/html">
+	<div class="review-date" id="{{date}}">
+		<div class="review-date-dateinfo left">
+			<div class="bold"><h2><center><p>{{date}}</p></center></h2></div>
+		<div class="red"><h2><center><p>{{weekday}}</p></center></h2></div>
+		</div>
+		<div class="right">
+			<img src="../image/review-divider.png"/>
+		</div>
+	</div>
+</script>
+<script id="review-item-tmpl" type="text/html">
+	<div class="review-item container" id="{{date}}-{{num}}">
+		<div class="review-item-content" id="{{date}}-{{num}}-content">
+			<span class="review-time left"><h4>{{time}}&nbsp;&nbsp;</h4></span>
+			<span class="review-name left"><h4>{{name}}&nbsp;&nbsp;</h4></span>
+			<span class="review-text left"><h4>{{text}}&nbsp;like</h4></span>
+		</div>
+	</div>
+</script>
+<script id="member-item-tmpl" type="text/html">
+	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">*</a></li>
+</script>
+</html>

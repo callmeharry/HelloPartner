@@ -1,0 +1,66 @@
+@charset "utf-8";
+/* CSS Document */
+
+.discuss_main{
+	width:1000px;
+	min-height:1000px;
+}
+.news-item{
+	width:800px;
+	margin:0 auto;
+	border:#000 1px solid;
+	margin-top:15px;
+}
+.news-item-name-bar{
+	width:700px;
+	margin:0 auto;
+	padding-top:10px;
+}
+.news-name-rightbar{
+	float:right;
+	font-family:华文细黑, 黑体, sans-serif;
+	font-size:12px;
+	color:#666;
+}
+.news-item-content{
+	width:700px;
+	margin:0 auto;
+	padding-top:10px;
+}
+.news-reply-area{
+	padding-top:30px;
+	padding-bottom:30px;
+	margin:0 auto;
+	width:550px;
+}
+.news-reply-new-main{
+	display:none;
+}
+.news-reply-new{
+		background-color:#FFC;
+}
+.news-reply-new-input autotextarea{
+	width:475px;
+	padding-left:20px;
+	padding-right:20px;
+	padding-top:5px;
+	padding-bottom:5px;
+}
+.news-reply-name-rightbar{
+	float:right;
+		font-family:华文细黑, 黑体, sans-serif;
+	font-size:12px;
+	color:#666;
+}
+.news-reply-item{
+	background-color:#FFC;
+}
+.news-reply-item-unread{
+	margin-bottom:5px;
+}
+#new-news{
+		width:800px;
+	margin:0 auto;
+	border:#000 1px solid;
+	margin-top:25px;
+}

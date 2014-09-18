@@ -1,0 +1,38 @@
+@charset "utf-8";
+/* CSS Document */
+#review{
+	width:1000px;
+	min-height:1000px;
+}
+.review-date{
+	display:inline;
+}
+.left{
+	float:left;
+}
+.review-date-dateinfo{
+	height:50px;
+	width:100px;
+}
+.bold{
+	font-weight:900;
+}
+.red{
+	color:#F0F;
+}
+.review-item-content{
+	padding-left:200px;
+	padding-right:200px;
+}
+.review-item{
+	max-width:1000px;
+	float:
+}
+.select-member{
+	color:#09F;
+	float:left;
+}
+.review-head{
+	width:1000px;
+	padding-top:30px;
+}

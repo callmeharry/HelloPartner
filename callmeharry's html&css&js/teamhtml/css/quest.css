@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+.quest{
+	width:1000px;
+	background:#EAEAEA;
+	min-height:1000px;
+	padding-top:50px;
+}
+.new-quest-content{
+	display:none;
+	width:650px;
+	margin:0 auto;
+	margin-top:20px;
+	border-radius:5px 5px 5px 5px;
+	
+}
+.singlequest{
+	width:536px;
+	border:#0CF 1px solid;
+	border-radius:5px 5px 5px 5px;
+}
+.previous-quest-detail{
+	display:none;
+}
+.previous-quest-delete{
+	padding-bottom:10px;
+}
+.previous-quest-detail-singlequest-singlestaff{
+	float:left;
+	width:460px;
+}
+.new-quest-button{
+	height:50px;
+	text-align:center;
+	line-height:50px;
+	overflow:hidden;
+	background-color:#FFF;
+	border-radius:5px 5px 5px 5px;
+}
+.previous-quest-title{
+	height:50px;
+	text-align:center;
+	line-height:50px;
+	overflow:hidden;
+	background-color:#FFF;
+	border-radius:5px 5px 5px 5px;
+}
+.previous-quest-singlequest{
+	border-radius:5px 5px 5px 5px;
+	margin:0 auto;
+	margin-top:10px;
+	width:750px;
+	margin-bottom:10px;
+}
+.new-quest{
+	width:750px;
+	border:#00F solid 1px;
+	margin:0 auto;
+	border-radius:5px 5px 5px 5px;
+}
+.previous-quest-detail-description{
+	width:650px;
+	margin:0 auto;
+	margin-top:20px;
+	margin-bottom:20px;
+}
+.time-hint{
+	color:#F00;
+}
+.previous-quest-detail-singlequest-singlestaff{
+	padding-bottom:10px;
+}
+.border-before-start{
+	border:#FF0 solid 1px;
+}
+.border-doing{
+	border:#F00 solid 1px;
+}
+.border-end{
+	border:#999 solid 1px;
+}
+.text-before-start{
+	color:#FF0;
+}
+.text-doing{
+	color:#F00；
+}
+.text-end{
+	color:#999;
+}

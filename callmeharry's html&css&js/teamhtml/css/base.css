@@ -1,0 +1,105 @@
+@charset "utf-8";
+/* CSS Document */
+.shadow{
+	box-shadow: 0 0 3px #000;
+}
+.middle{
+	width: 1000px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:100px;
+}
+.top{
+	margin-top:20px;
+	height:50px;
+}
+.top_project{
+	width:300px;
+	height:75px;
+	display:inline;
+	font-size:24px;
+}
+.top_navigate{
+	width:550px;
+	float:right;
+	margin_left:10px;
+	height:75px;
+	display:inline;
+	margin-top:5px;
+	font-family:黑体, Geneva, sans-serif;
+	font-size:14px;
+}
+.top_navigate a{
+	color:#999;
+}	
+.top_navigate a:link{
+	text-decoration:none;
+}
+.top_navigate a:hover{
+	color:#000;
+}
+.header{
+	height:55px;
+	background-color:#000;
+	margin-left:0px;
+	margin-right:0px;
+	margin-top:0px;
+}
+.header_middle{
+	height:50px;
+	margin-left:auto;
+	margin-right:auto;
+	width:1000px;
+}
+.header_logo{
+	height:50px;
+	float:left;
+	display:inline;
+}
+.header_user{
+	height:50px;
+	float:right;
+	width:200px;
+}
+.below_header{
+	margin:0px;
+	background-color:#fff;
+}
+.searchpartner{
+	padding_top:10px;
+	text-align:center;
+	width:20px;
+}
+.content{
+	margin-bottom:0px;
+	min-height:1000px;
+	border:#ccc 1px solid;
+	border-radius: 8px 8px 8px 8px;
+	background-color:#DBFDF8
+}
+
+
+.header_user li {
+float:left;
+position:relative;
+list-style-type:none;
+display:inline;
+}
+.header_user li a:link, .header_user li a:visited {
+display:block;
+text-decoration:none;
+color:#fff;
+width:150px;
+height:20px;
+line-height:20px;
+border-width:1px 1px 0 0;
+padding-left:0px;
+background:#000;
+}
+#team-navbar{
+	margin-top:20px;
+}
+.footer{
+	margin:0 auto;
+	width:300px;
+}

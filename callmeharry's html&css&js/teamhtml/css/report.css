@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document */
+#report{
+	width:1000px;
+	min-height:1000px;
+}
+#report-header{
+	width:1000px;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+#report-header-content{
+	width:600px;
+	margin:0 auto;
+	text-align:center;
+	margin:0 auto;
+}
+.text-center{
+	text-align:center;
+}
+.header-side{
+	width:200px;
+}
+.report-content{
+	width:1000px;
+}
+#report-inneritem{
+	padding-top:20px;
+	padding-left:75px;
+	padding-right:75px;
+	
+}
