@@ -19,6 +19,7 @@ function add_singlequest(){
 	$("#singlequest-list").append(view);
 	$("#checkbox-member-"+new_quest_singlequest_item).append(namelist_html);
 		new_quest_singlequest_item++;
+document.getElementById("max-singlequest-num").value=new_quest_singlequest_item;
 }
 function delete_singlequest(a){
 	document.getElementById("singlequest-list").removeChild(document.getElementById("singlequest-"+a.name));
