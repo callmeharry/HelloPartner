@@ -1,4 +1,4 @@
-<!--Author:Callmeharry Time:2014/8/30-->
+﻿<!--Author:Callmeharry Time:2014/8/30-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -148,6 +148,18 @@
 	</div>
 	{% endfor %}
 </div>
+<!--<script>标签里的{{num}}后台不要替换-->
+<script id="new-quest-singlequest-tmpl" type="text/html">
+<div class="singlequest" id="singlequest-{{num}}">
+		<textarea class="form-control" cols="40" rows="4" placeholder="在这里输入单项任务的内容" name="singlequest-textarea-{{num}}"></textarea><br />
+		<label class="control-label">分配给</label>
+		<!--下面的staff是团队所有人的名字的一个数组-->
+		{% for staff in staffs %}
+		<input type="checkbox" name="singlequest-chechbox-{{num}}" value="{{staff}}">{{staff}}
+		{% endfor %}
+		<br /><a onclick="delete_singlequest(this)"  name= "{{num}}"style="text-decoration:none; cursor:pointer"><span class="glyphicon glyphicon-minus"></span><span style="padding-left:5px">删除</span></a>
+</div>
+</script>
 <script>
 $(function(){
 	var t1 = 0;
