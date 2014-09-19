@@ -44,8 +44,12 @@ function delete_previous_quest(a){
 }
 function finish_quest(a){
 	//alert(a.name);
+	var data=a.name;
+	var array = new Array();
+	array = data.split("-");
+	var staff_name = array[0];
 	 $.post("***",
-                    {staff_name:a.name},
+                    {staff_name:staff_name},
                     function(data){
                         alert(data);
                     }

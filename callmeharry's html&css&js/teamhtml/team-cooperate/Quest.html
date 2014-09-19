@@ -76,7 +76,7 @@
 		</div>
 	</div>
 {% for quest,singlequests in tasksdir.items %}<!--stateid是任务的状态，有未开始（before-start）、进行中（doing）、已完成（end）三个值-->
-	<div class="previous-quest-singlequest border-{{quest.state}}" id="previous-quest-{{quest.id}}">
+	<div class="previous-quest-singlequest border-{{quest.stateid}}" id="previous-quest-{{quest.id}}">
 		<div class="previous-quest-title">
 			<div class="col-md-2">
 				{{quest.begintime}}
@@ -110,7 +110,8 @@
 								<div class="previous-quest-detail-singlequest-content col-sm-5">{{singlequest.decription}}
 								</div>
 								<!--这里的singlequest.stateid同上-->
-								<div class="previous-quest-detail-singlequest-state col-sm-1 text-{{singlequest.state}}"><b>{{singlequest.state}}</b>
+//state为中文的任务状态，stateid为英文的任务状态 需修改
+								<div class="previous-quest-detail-singlequest-state col-sm-1 text-{{singlequest.stateid}}"><b>{{singlequest.state}}</b>
 								</div>
 							</div>
 							<div>
@@ -123,7 +124,10 @@
 										<div class="previous-quest-detail-singlequest-singlestaff-state" style="float:right; padding-right:10px" id="{{staff.id}}-state">
 <!--下面的name是登陆的人的名字，这里的意思是，如果下面的员工的名字是登陆者的话，他可以设置他的工作完成。我这里只传了个员工名字，可能还需要别的。需要别的的话就在staff这个类加一些属性，我传进去-->		
 										{% ifequal staff.username name  %}
-											<a style="text-decoration:none; cursor:pointer" title="点击完成该任务" onclick="finish_quest(this)" name="{{staff.name}}">
+										{% ifequal staff.stateid "doing" }
+<!--name属性可以多增加几个属性，以“-”间隔-->
+											<a style="text-decoration:none; cursor:pointer" title="点击完成该任务" onclick="finish_quest(this)" name="{{staff.name}}-">
+										{% endifequal %}
 										{% endifequal %}
 										{{staff.state}}
 										{% ifequal staff.username name %}
