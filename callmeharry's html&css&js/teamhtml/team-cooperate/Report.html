@@ -1,4 +1,4 @@
-<!--Author:Callmeharry Time:2014/9/1-->
+﻿<!--Author:Callmeharry Time:2014/9/1-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -27,23 +27,32 @@
 			<div id="report-time"><h4>{{time}}</h4>
 			</div>
 			<div id="report-previous-next">
-				<div class="col-md-6">
-					<a href="##" style="text-decoration:none">上一篇</a>
+			<!--这里我不知道怎么表示，你写一下吧。-->
+				{% if (存在上一篇总结)%}
+				<div class="col-md-6"  style="text-align:center">
+					<a href="{{previous_report}}" style="text-decoration:none">上一篇</a>
 				</div>
-				<div class="col-md-6" >
-					<a href="##" style="text-decoration:none">下一篇</a>
+				{% endif %}
+				{% if (存在下一篇总结)%}
+				<div class="col-md-6"  style="text-align:center">
+					<a href="{{next_report}}" style="text-decoration:none">下一篇</a>
 				</div>
+				{% endif %}
 			</div>
 		</div>
 		<div class="left header-side">
 			<div class="container" style="padding-top:15px">
 				<div style="float:left; height:50px; text-align:center; line-height:40px;">筛选成员：</div>
 				<div class="dropdown">
+		<!--下一行的{{member}}是上个页面点击了筛选成员的名字，默认为“所有人”。-->
 		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >{{member}}
     <span class="caret"></span></button>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="memberlist">
-		<!--下面的<li>标签是按钮下拉菜单的单个选项，请将#替换为链接，*替换为成员名字-->
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">*</a></li>
+		<!--下面的staff是团队所有人的名字的一个数组，下一行的“allmember”为观看所有人的总结的url-->
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="{{allmember}}">所有人</a></li>
+		{% for staff in staffs %}
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="staff.url">{{staff.name}}</a></li>
+		{% endfor %}
 		</ul>
 				</div>
 			</div>
@@ -69,8 +78,9 @@
 							<textarea class="form-control" rows="3" id="report-item-5"></textarea>
                 			</div>
                 			<div class="modal-footer">
-                				<button class="btn btn-primary" type="button" data-dismiss="modal" onclick="send_report()">发送</button>
-                				<button class="btn btn-primary" type="button" onclick="save_as_draft()">保存为草稿</button>
+                				<!--author是登陆用户的名字-->
+                				<button class="btn btn-primary" type="button" data-dismiss="modal" data-name="{{author}}" onclick="send_report()" id="new_report_send">发送</button>
+                				<button class="btn btn-primary" type="button" onclick="save_as_draft()" data-name="{{author}}">保存为草稿</button>
                 			</div>
                 		</div>
                 	</div>
