@@ -32,3 +32,22 @@ function show_previous_quest_detail(a){
 	$("#"+id).fadeToggle(200,null,null);
 
 }
+//***²¿·ÖÌæ»»³Éurl
+function delete_previous_quest(a){
+	//alert(a.name);
+	 $.post("***",
+                    {quest_id:a.name},
+                    function(data){
+                        alert(data);
+                    }
+            );
+}
+function finish_quest(a){
+	//alert(a.name);
+	 $.post("***",
+                    {staff_name:a.name},
+                    function(data){
+                        alert(data);
+                    }
+            );
+}
