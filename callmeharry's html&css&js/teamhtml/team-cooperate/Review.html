@@ -1,4 +1,4 @@
-<!--Author:Callmeharry Time:2014/9/1-->
+﻿<!--Author:Callmeharry Time:2014/9/1-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -24,13 +24,38 @@
 		<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" >{{member}}
     <span class="caret"></span></button>
 		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" id="memberlist">
-		<!--下面的<li>标签是按钮下拉菜单的单个选项，请将#替换为链接，*替换为成员名字-->
-		<li role="presentation"><a role="menuitem" tabindex="-1" href="#">*</a></li>
+		<!--下面的staff是团队所有人的名字的一个数组，下一行的“allmember”为观看所有人的总结的url-->
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="{{allmember}}">所有人</a></li>
+		{% for staff in staffs %}
+		<li role="presentation"><a role="menuitem" tabindex="-1" href="staff.url">{{staff.name}}</a></li>
+		{% endfor %}
 		</ul>
 		</div>
 	</div>
 	<HR style="BORDER-RIGHT: #00686b 1px dotted; BORDER-TOP: #00686b 1px dotted; BORDER-LEFT: #00686b 1px dotted; BORDER-BOTTOM: #00686b 1px dotted" noShade SIZE=1>
 	<div class="container review-content">
+	{% for daily-report in daily-reports %}
+	<div class="review-date" id="{{date}}">
+		<div class="review-date-dateinfo left">
+			<!--date：日期，weekday：周一-周日的某一个值-->
+			<div class="bold"><center><p>{{report.date}}</p></center></div>
+			<div class="red"><center><p>{{report.weekday}}</p></center></div>
+		</div>
+		<div class="right">
+			<img src="../image/review-divider.png"/>
+		</div>
+		{% for report in daily-report.reports%}
+			<div class="review-item container">
+				<div class="review-item-content">
+				<!--time是时间，指代小时和分钟，name是发布人-->
+					<span class="review-time left"><h4>{{report.time}}&nbsp;&nbsp;</h4></span>
+					<span class="review-name left" style="margin-left:50px;"><h4>{{report.name}}&nbsp;&nbsp;</h4></span>
+					<span class="review-text left"><h4>{{report.text}}&nbsp;</h4></span>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+	{% endfor %}
 	</div>
 </div>
 </body>
@@ -53,8 +78,5 @@
 			<span class="review-text left"><h4>{{text}}&nbsp;like</h4></span>
 		</div>
 	</div>
-</script>
-<script id="member-item-tmpl" type="text/html">
-	<li role="presentation"><a role="menuitem" tabindex="-1" href="#">*</a></li>
 </script>
 </html>
