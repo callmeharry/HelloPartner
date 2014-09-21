@@ -46,9 +46,9 @@ function reply_adduser(a){
 	array = a.name.split("-");
 	var name = array[0];
 	var id = array[1];
-	document.getElementById("news-reply-new-input-"+id).innerText="回复" + name;
-	var id = "news-reply-new-main-" + mid;
-	document.getElementById(id).style.display = "block";
-	var hide_id = "news-reply-new-tab-div-" + mid;
+	document.getElementById("news-reply-new-input-"+id).innerText="回复" + name+"：";
+	var show_id = "news-reply-new-main-" + id;
+	document.getElementById(show_id).style.display = "block";
+	var hide_id = "news-reply-new-tab-div-" + id;
 	document.getElementById(hide_id).style.display = "none";
 }
